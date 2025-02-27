@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('service_provider_id')->constrained('service_providers');
+            $table->foreignId('cutomer_id')->constrained('customers');
+            $table->enum('status',['accepted','cancled','declined','complete']);
+            $table->decimal('price')->nullable();
+            $table->unsignedBigInteger('canceled_by')->nullable();
             $table->timestamps();
         });
     }

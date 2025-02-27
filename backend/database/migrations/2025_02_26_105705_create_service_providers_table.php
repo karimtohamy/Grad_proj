@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('service_providers', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('users');
+            $table->boolean('has_assistant')->default(false);
+            $table->integer('years_of_experience');
+            $table->foreignId('service_id')->constrained('services');
             $table->timestamps();
         });
     }

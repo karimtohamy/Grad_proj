@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('legal_images', function (Blueprint $table) {
             $table->id();
+            $table->string('image_path');
+            $table->foreignId('service_provider_id')->constrained('service_providers');
             $table->timestamps();
         });
     }
