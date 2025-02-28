@@ -14,11 +14,14 @@ return new class extends Migration
         Schema::create('support_tickets', function (Blueprint $table) {
             $table->id();
             $table->foreignId('created_by');
+            $table->enum('created_by_type', ['admin', 'customer', 'provider']);
             $table->foreignId('booking_id')->constrained('bookings');
+            $table->foreignId('assigned_to')->nullable()->constrained('admins')->nullOnDelete(); 
             $table->text('message');
-            $table->enum('status',['open', 'in_progress', 'closed']);
+            $table->enum('status', ['open', 'in_progress', 'closed']);
             $table->timestamps();
         });
+
     }
 
     /**

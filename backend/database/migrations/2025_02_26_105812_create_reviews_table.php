@@ -15,9 +15,10 @@ return new class extends Migration
             $table->id();
             $table->integer('rating');
             $table->text('comments')->nullable();
-            $table->unsignedBigInteger('rater_id');
-            $table->unsignedBigInteger('rated_id');
-            $table->enum('rater_type',['customer','provider']);
+            $table->unsignedBigInteger('rater_id'); // The customer/provider giving the rating
+            $table->enum('rater_type', ['customer', 'provider']); // Defines who rated
+            $table->unsignedBigInteger('rated_id'); // The customer/provider receiving the rating
+            $table->enum('rated_type', ['customer', 'provider']); // Defines who is being rated
             $table->timestamps();
         });
     }
