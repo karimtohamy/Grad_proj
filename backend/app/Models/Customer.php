@@ -4,27 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 
-class ServiceProvider extends Model
+class Customer extends Model
 {
     protected $fillable = [
-        'user_id',
-        'has_assistant',
-        'has_experience',
-        'service_id',
+        'user_id'
     ];
-
     public function user():BelongsTo{
-        return $this->belongsTo(User::class);
-    }
-    public function LegalImages():HasMany{
-        return $this->hasMany(LegalImage::class);
-    }
 
-    public function Service():BelongsTo{
-        return $this->belongsTo(Service::class);
+        return $this->belongsTo(User::class);
     }
 
     public function givenReviews()
@@ -41,6 +29,7 @@ class ServiceProvider extends Model
     {
         return $this->receivedReviews()->avg('rating');
     }
+
     public function supportTickets()
     {
         return $this->morphMany(SupportTicket::class, 'creator');

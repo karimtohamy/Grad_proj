@@ -4,13 +4,15 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable,HasApiTokens;
 
     /**
      * The attributes that are mass assignable.
@@ -21,6 +23,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'phone',
     ];
 
     /**
@@ -45,4 +48,27 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function Image(): HasOne
+    {
+        return $this->hasOne(Image::class);
+    }
+    // Relationship: If the user is a customer, fetch customer details
+    public function customer()
+    {
+        return $this->hasOne(Customer::class, 'user_id');
+    }
+
+    // Relationship: If the user is a service provider, fetch provider details
+    public function provider()
+    {
+        return $this->hasOne(ServiceProvider::class, 'user_id');
+    }
+
+    // Relationship: If the user is an admin, fetch admin details
+    public function admin()
+    {
+        return $this->hasOne(Admin::class, 'user_id');
+    }
+
 }
