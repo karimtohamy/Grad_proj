@@ -12,18 +12,21 @@ class ServiceProvider extends Model
     protected $fillable = [
         'user_id',
         'has_assistant',
-        'has_experience',
+        'years_of_experience',
         'service_id',
     ];
 
-    public function user():BelongsTo{
-        return $this->belongsTo(User::class);
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
-    public function LegalImages():HasMany{
+    public function LegalImages(): HasMany
+    {
         return $this->hasMany(LegalImage::class);
     }
 
-    public function Service():BelongsTo{
+    public function Service(): BelongsTo
+    {
         return $this->belongsTo(Service::class);
     }
 
@@ -37,7 +40,7 @@ class ServiceProvider extends Model
         return $this->morphMany(Review::class, 'rated');
     }
 
-    public function averageRating()
+    public function getAverageRating()
     {
         return $this->receivedReviews()->avg('rating');
     }
@@ -45,4 +48,9 @@ class ServiceProvider extends Model
     {
         return $this->morphMany(SupportTicket::class, 'creator');
     }
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class, 'service_provider_id');
+    }
+
 }

@@ -8,11 +8,12 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Translatable\HasTranslations;
 
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable,HasApiTokens;
+    use HasFactory, Notifiable,HasApiTokens,HasTranslations;
 
     /**
      * The attributes that are mass assignable.
@@ -24,8 +25,9 @@ class User extends Authenticatable
         'email',
         'password',
         'phone',
+        'phone_verified_at'
     ];
-
+    public $translatable = ['name'];
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -44,7 +46,7 @@ class User extends Authenticatable
     protected function casts(): array
     {
         return [
-            'email_verified_at' => 'datetime',
+            'phone_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
     }
