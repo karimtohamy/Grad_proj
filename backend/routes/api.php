@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Customer\HomepageController;
+use App\Http\Controllers\Customer\ServiceProviderController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Middleware\SetLocale;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -14,8 +16,22 @@ Route::middleware([SetLocale::class])->group(function () {
 });
 
 
+//returns all categories
+Route::get('/services',[ServiceController::class,'index']);
+
+//gets all service providers in a category
+Route::get('/services/{service}',[ServiceProviderController::class,'index']);
+
+//shows a single service provide after selecting one
+Route::get('/providers/{ServiceProvider}',[ServiceProviderController::class,'show']);
+
+//gets all data for the home page 
+Route::get('/',HomepageController::class);
+
+
+
+
 Route::middleware(['auth:sanctum',SetLocale::class])->group(function () {
-    Route::get('/',[HomepageController::class,'index']);
     Route::post('/logout', [AuthController::class, 'logout']);
 });
 
