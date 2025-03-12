@@ -1,3 +1,4 @@
+
 <?php
 
 use App\Http\Controllers\AuthController;
@@ -12,7 +13,7 @@ use Ramsey\Uuid\Generator\RandomGeneratorFactory;
 
 Route::middleware([SetLocale::class])->group(function () {
     Route::post('/login', [AuthController::class, 'login']);
-    Route::post('/register', [AuthController::class, 'register']);
+    Route::post('/register', [AuthController::class, 'CustomerRegister']);
 });
 
 
@@ -25,7 +26,7 @@ Route::get('/services/{service}',[ServiceProviderController::class,'index']);
 //shows a single service provide after selecting one
 Route::get('/providers/{ServiceProvider}',[ServiceProviderController::class,'show']);
 
-//gets all data for the home page 
+//gets all data for the home page
 Route::get('/',HomepageController::class);
 
 
