@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
   export const useAuthStore = defineStore("auth", {
   state: () => ({
-    token: null,
+    token:  sessionStorage.getItem('token') || null,
     user: null,
   }),
   actions: {
@@ -10,12 +10,13 @@ import { defineStore } from "pinia";
 
       const response = await $axios.post('/login',credentials) 
       console.log('web response',response);
-      
+      navigateTo('/')
     },
     async register(credentials){
       const { $axios } = useNuxtApp();
       const response = await $axios.post('/register',credentials)
-      this.setToken(response.token)
+      console.log(response.data.token);
+    
       return response
     },
     logout() {
@@ -23,10 +24,9 @@ import { defineStore } from "pinia";
       this.user = null;
       sessionStorage.removeItem("token");
     },
-  },
-  mutations: {
+
     setToken(token) {
-      debugger
+      
       this.token = token;
       sessionStorage.setItem("token", token);
     },
