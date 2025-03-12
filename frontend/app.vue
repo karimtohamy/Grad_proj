@@ -1,7 +1,9 @@
 <template>
   <div>
     <ion-app>
-      <ion-router-outlet />
+      <NuxtLayout >
+        <ion-router-outlet />
+      </NuxtLayout>
     </ion-app>
   </div>
 </template>
