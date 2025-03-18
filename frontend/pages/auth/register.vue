@@ -52,7 +52,6 @@
     </IonPage>
 </template>
 <script setup>
-definePageMeta({ layout: 'authlayout' })
 const user = ref({})
 const errMsg = ref('')
 const userAuth = useAuthStore()
