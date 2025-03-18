@@ -2,9 +2,16 @@
 
   <div class="w-full flex flex-col bg-[#124559] text-[#eff6e0] pt-9 pb-5 ">
     <div class="flex justify-between px-6 items-center">
-      <div>
-        welcome <br>
-        karim tohamy
+      <div v-if="user">
+        <div>
+          welcome <br>
+          {{ user.name }}
+        </div>
+      </div>
+      <div v-else>
+        <ion-button fill="clear" :router-link="{path:'/auth'}" class="text-background ">
+          Login
+        </ion-button>
       </div>
       <div class="relative">
         <div class="absolute bg-background size-2 rounded-full start-0.5"></div>
@@ -33,10 +40,12 @@
 
 </template>
 
-<script lang="ts" setup>
-
+<script setup>
+const user = useAuthStore().$state.user
 </script>
 
-<style>
-
+<style scoped lang="scss">
+ion-button{
+  background: none;
+}
 </style>

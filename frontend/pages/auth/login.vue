@@ -1,6 +1,7 @@
 <template>
   <IonPage>
-    <div class="">
+    <IonContent>
+
       <div class="flex w-full justify-end">
         <img src="/logo.png" alt="" class="size-10">
       </div>
@@ -54,8 +55,9 @@
         </div>
       </div>
 
+    </IonContent>
 
-    </div>
+
   </IonPage>
 </template>
 
