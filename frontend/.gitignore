@@ -22,3 +22,6 @@ logs
 .env
 .env.*
 !.env.example
+
+resources/ios/**/*
+resources/android/**/*
