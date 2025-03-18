@@ -1,9 +1,11 @@
 <template>
   <div>
-    <ion-app>
-      <NuxtLayout >
+    <ion-app class="min-h-screen bg-background py-10">
         <ion-router-outlet />
-      </NuxtLayout>
+
     </ion-app>
   </div>
 </template>
+<style>
+
+</style>
