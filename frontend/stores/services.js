@@ -8,6 +8,10 @@ export const useServicesStore = defineStore("servicesStore", {
     loading: false,
   }),
   actions: {
+    async getHomepageData(){
+      const {data} = await $axios.get('/homepage')
+      return data
+    },
     async fetchServices() {
       const { data } = await $axios.get("/services");
       this.services = data.services;
