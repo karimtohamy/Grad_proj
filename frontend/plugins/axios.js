@@ -10,6 +10,7 @@ export default defineNuxtPlugin((nuxtApp) => {
   axiosInstance.interceptors.request.use(
     (config) => {
       config.headers['accept-language'] = 'en';
+      config.headers["ngrok-skip-browser-warning"] = "69420"
       const token = useAuthStore().token;
       if (token) {
         config.headers.Authorization = `Bearer ${token}`;
