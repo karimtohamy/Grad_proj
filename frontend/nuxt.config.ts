@@ -3,16 +3,16 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineNuxtConfig({
   runtimeConfig: {
     public: {
-      apiBase: process.env.API_BASE || "http://localhost:3000/api",
+      apiBase: process.env.API_BASE ,
     },
   },
   compatibilityDate: "2024-11-01",
+  ssr: false,
 
   devtools: { enabled: true },
 
   modules: ["@nuxtjs/ionic", "@pinia/nuxt"],
-  ssr: false,
-  css: ["~/assets/css/main.css"],
+  css: ["~/assets/css/main.css",'@/theme/variables.scss'],
 
   vite: {
     plugins: [tailwindcss()],
@@ -22,8 +22,6 @@ export default defineNuxtConfig({
       //
     },
     css: {
-      basic: false,
-      core: false,
     },
   },
 });
