@@ -15,7 +15,7 @@
               <!-- Email Input -->
               <div>
                 <input type="email" id="email" aria-describedby="helper-text-explanation"
-                  class="border-b-2 border-main placeholder:text-main text-main text-sm focus:outline-none block w-full p-2.5 bg-background"
+                  class="border-b-2 border-main placeholder:text-main !text-main text-sm focus:outline-none block w-full p-2.5 bg-background"
                   v-model="user.email" placeholder="Email" />
                 <p id="helper-text-explanation" class="text-red-500 text-sm mt-1">{{ errMsg }}</p>
               </div>
@@ -23,7 +23,7 @@
               <!-- Password Input -->
               <div class="mt-4">
                 <input type="password" id="password"
-                  class="border-b-2 border-main placeholder:text-main text-main text-sm focus:outline-none block w-full p-2.5 bg-background"
+                  class="border-b-2 border-main placeholder:text-main !text-main text-sm focus:outline-none block w-full p-2.5 bg-background"
                   v-model="user.password" placeholder="Password" />
               </div>
 
@@ -33,7 +33,7 @@
                   <input type="checkbox" name="remember_me" />
                   <span class="ms-1">Remember me</span>
                 </label>
-                <a href="#">Forgot Password?</a>
+                <a href="#" class="!text-main">Forgot Password?</a>
               </div>
 
               <!-- Submit Button -->

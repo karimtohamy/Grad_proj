@@ -1,53 +1,76 @@
 <template>
     <IonPage>
-        <form @submit.prevent="register" class="space-y-4">
-            <!-- Email -->
-            <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
-            <input type="email" id="email"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                v-model="user.email" placeholder="Email">
 
-            <!-- Name in English -->
-            <label for="firstName" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name in
-                English</label>
-            <input type="text" id="firstName"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                v-model="user.name_en" placeholder="Name in English">
+        <div class="px-6 pt-7">
+            <div class="flex justify-end w-full">
 
-            <!-- Name in Arabic -->
-            <label for="lastName" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name in
-                Arabic</label>
-            <input type="text" id="lastName"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                v-model="user.name_ar" placeholder="Name in Arabic">
+                <img src="/logo.png" alt="" class="size-10">
+            </div>
+            <div class="text-main font-bold text-6xl">
+                Hi !
+                Welcome
+                <p class="text-sm">
+                    Let's create an account
+                </p>
+            </div>
+            <form @submit.prevent="register" class="space-y-3 pt-9 !text-main">
+                <!-- Email -->
+                <div>
+                    <input type="email" id="email"
+                        class="border-b-2 border-main placeholder:text-main text-main text-sm focus:outline-none block w-full p-2.5 bg-background"
+                        v-model="user.email" placeholder="Email" />
+                </div>
+                <div>
+                    <input type="text" id="phone"
+                        class="border-b-2 border-main placeholder:text-main text-main text-sm focus:outline-none block w-full p-2.5 bg-background"
+                        v-model="user.phone" placeholder="Phone Number" />
+                </div>
+                <!-- Name in English -->
+                <div>
+                    <input type="text" id="firstName"
+                        class="border-b-2 border-main placeholder:text-main text-main text-sm focus:outline-none block w-full p-2.5 bg-background"
+                        v-model="user.name_en" placeholder="Name in English" />
+                </div>
 
-            <!-- Phone Number -->
-            <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone Number</label>
-            <input type="text" id="phone"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                v-model="user.phone" placeholder="Phone Number">
+                <!-- Name in Arabic -->
+                <div>
+                    <input type="text" id="lastName"
+                        class="border-b-2 border-main placeholder:text-main text-main text-sm focus:outline-none block w-full p-2.5 bg-background"
+                        v-model="user.name_ar" placeholder="Name in Arabic" />
+                </div>
 
-            <!-- Password -->
-            <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
-            <input type="password" id="password"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                v-model="user.password" placeholder="Password">
+                <!-- Phone Number -->
 
-            <!-- Confirm Password -->
-            <label for="passwordConfirmation"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirm Password</label>
-            <input type="password" id="passwordConfirmation"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                v-model="user.password_confirmation" placeholder="Confirm Password">
 
-            <!-- Error Message -->
-            <div class="text-red-500 text-sm">{{ errMsg }}</div>
+                <!-- Password -->
+                <div>
+                    <input type="password" id="password"
+                        class="border-b-2 border-main placeholder:text-main text-main text-sm focus:outline-none block w-full p-2.5 bg-background"
+                        v-model="user.password" placeholder="Password" />
+                </div>
 
-            <!-- Submit Button -->
-            <button type="submit"
-                class="w-full text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5">Submit</button>
-        </form>
+                <!-- Confirm Password -->
+                <div>
+                    <input type="password" id="passwordConfirmation"
+                        class="border-b-2 border-main placeholder:text-main text-main text-sm focus:outline-none block w-full p-2.5 bg-background"
+                        v-model="user.password_confirmation" placeholder="Confirm Password" />
+                </div>
 
+                <!-- Error Message -->
+                <div class="text-red-500 text-sm">{{ errMsg }}</div>
+
+                <!-- Submit Button -->
+                <div>
+                    <button type="submit"
+                        class="bg-main mt-6 text-white w-full h-10 rounded-lg focus:outline-none focus:ring-2 focus:ring-main">
+                        Submit
+                    </button>
+                </div>
+            </form>
+            <div class="fixed bottom-4 left-0 right-0 text-center text-main">
+                <span>Have an account?</span><a href="" class="!text-main ms-2 font-bold text-lg">Login</a>
+            </div>
+        </div>
 
     </IonPage>
 </template>
