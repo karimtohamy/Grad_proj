@@ -1,7 +1,7 @@
 <template>
     <IonTabs>
         <IonRouterOutlet class="" />
-        <IonTabBar slot="bottom" class="flex justify-around bg-main py-2 border-t text-background border-gray-200 shadow-md">
+        <IonTabBar slot="bottom" class="flex justify-around bg-main py-2  text-background shadow-md">
             <IonTabButton tab="home" href="/tabs/home"
                 class="flex flex-col items-center bg-main ">
                 <ion-icon :icon="ioniconsHomeOutline" class="text-background"></ion-icon>

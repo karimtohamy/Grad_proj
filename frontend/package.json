@@ -17,7 +17,8 @@
     "@capacitor/haptics": "7.0.0",
     "@capacitor/ios": "^7.1.0",
     "@capacitor/keyboard": "7.0.0",
-    "@capacitor/status-bar": "7.0.0",
+    "@capacitor/splash-screen": "^7.0.0",
+    "@capacitor/status-bar": "^7.0.0",
     "@nuxtjs/ionic": "^0.16.0",
     "@pinia/nuxt": "^0.10.1",
     "@tailwindcss/vite": "^4.0.14",
@@ -29,6 +30,7 @@
     "vue-router": "latest"
   },
   "devDependencies": {
+    "@capacitor/assets": "^3.0.5",
     "@capacitor/cli": "^7.1.0",
     "@vue/cli-service": "5.0.8",
     "sass-embedded": "^1.85.1"

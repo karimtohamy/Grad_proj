@@ -1,6 +1,6 @@
 <template>
 
-  <div class="w-full flex flex-col bg-[#124559] text-[#eff6e0] pt-9 pb-5 ">
+  <div class="w-full flex flex-col bg-[#124559] text-[#eff6e0] pt-5 pb-5 ">
     <div class="flex justify-between px-6 items-center">
       <div v-if="user">
         <div>
