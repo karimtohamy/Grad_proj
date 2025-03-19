@@ -17,11 +17,5 @@ export default defineNuxtConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  ionic: {
-    integrations: {
-      //
-    },
-    css: {
-    },
-  },
+
 });
