@@ -15,9 +15,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('service_provider_id')->constrained('service_providers');
             $table->foreignId('cutomer_id')->constrained('customers');
-            $table->enum('status',['accepted','cancled','declined','complete']);
+            $table->enum('status',['pending','accepted','cancled','declined','complete']);
             $table->decimal('price')->nullable();
             $table->unsignedBigInteger('canceled_by')->nullable();
+            $table->dateTime('booked_time');
             $table->timestamps();
         });
     }

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->boolean('has_assistant')->default(false);
             $table->integer('years_of_experience');
             $table->foreignId('service_id')->constrained('services');
+            $table->string('slug')->unique();
             $table->timestamps();
         });
     }
