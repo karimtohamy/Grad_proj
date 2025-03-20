@@ -13,9 +13,12 @@ class ServiceProviderController extends Controller
 {
     public function index(Service $service)
     {
-        $service_providers = $service->ServiceProviders()->get();
+        $service_providers = $service->ServiceProviders()
+            ->with('user')
+            ->withCount('receivedReviews')
+            ->withAvg('receivedReviews', 'rating')->paginate(10);
         return response()->json([
-            ServiceProviderResource::collection($service_providers)
+            'service_providers' => ServiceProviderResource::collection($service_providers),
         ]);
 
     }
