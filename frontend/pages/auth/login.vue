@@ -1,6 +1,6 @@
 <template>
   <IonPage>
-    <IonContent>
+    <IonContent class="!flex !flex-col !justify-between">
 
       <div class="flex w-full justify-end">
         <img src="/logo.png" alt="" class="size-10">
@@ -22,11 +22,16 @@
               </div>
 
               <!-- Password Input -->
-              <div class="mt-4">
-                <input type="password" id="password"
+              <div class="mt-4 relative">
+                <input :type="showPassword ? 'text' : 'password'" id="password"
                   class="border-b-2 border-main placeholder:text-main !text-main text-sm focus:outline-none block w-full p-2.5 bg-background"
                   v-model="user.password" placeholder="Password" />
+                <div @click="togglePasswordVisibility"
+                  class="absolute inset-y-0 end-0 flex items-center cursor-pointer pe-2">
+                  <ion-icon :icon="showPassword ? ioniconsEyeOff : ioniconsEye" class="text-main"></ion-icon>
+                </div>
               </div>
+
 
               <!-- Remember Me & Forgot Password -->
               <div class="flex justify-between mt-5 text-main">
@@ -50,31 +55,43 @@
         </div>
 
         <!-- Don't Have An Account Section -->
-        <div class="fixed bottom-4 left-0 right-0 text-center text-main">
-          <span>Don't have an account?</span><a href="" class="!text-main ms-2 font-bold text-lg">Sign Up</a>
-        </div>
       </div>
 
+      <div class="text-center text-main mt-5" @click="navigate()">
+        <span>Don't have an account?</span><span class="!text-main ms-2 font-bold text-lg">Sign Up</span>
+      </div>
     </IonContent>
-
 
   </IonPage>
 </template>
 
 <script setup>
 
-
-
+import { Keyboard } from '@capacitor/keyboard';
+const router = useRouter()
 const userAuth = useAuthStore()
 const user = ref({})
 const errMsg = ref('')
+const showPassword = ref(false);
 function login() {
+  Keyboard.hide()
   return userAuth.login(user.value)
-    .then((res) => res.data)
+    .then((res) => {
+      res.data
+
+    })
     .catch((err) => {
       errMsg.value = err.response?.data?.message;
       throw err;
     });
+}
+
+function togglePasswordVisibility() {
+  showPassword.value = !showPassword.value;
+}
+
+function navigate() {
+  router.push('/auth/register')
 }
 </script>
 
