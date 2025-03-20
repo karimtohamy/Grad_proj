@@ -22,10 +22,15 @@ export const useAuthStore = defineStore("auth", {
       console.log(response.data.token);
       return response;
     },
-    logout() {
+    async logout() {
+      const { $axios } = useNuxtApp();
+
+      const {data} = await $axios.post('/logout')
       this.token = null;
       this.user = null;
       localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      return data.message
     },
     setToken(token) {
       this.token = token;

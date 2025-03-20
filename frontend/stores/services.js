@@ -5,17 +5,11 @@ export const useServicesStore = defineStore("servicesStore", {
   state: () => ({
     services: [],
     serviceProviders: [],
-    loading: false,
   }),
   actions: {
     async getHomepageData() {
-      this.loading = true;
-
       const { data } = await $axios.get("/homepage");
       this.services = data.services;
-
-      this.loading = false;
-
       return data;
     },
     async fetchServices() {
@@ -24,8 +18,8 @@ export const useServicesStore = defineStore("servicesStore", {
       return data.services;
     },
     async fetchServiceProviders(service_id) {
-      const response = await $axios.get(`/services/${service_id}`);
-      return response.data;
+      const { data } = await $axios.get(`/services/${service_id}`);
+      return data.service_providers;
     },
 
     async fetchServiceProvider(provider_id) {

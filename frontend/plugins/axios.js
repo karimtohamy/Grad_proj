@@ -23,11 +23,11 @@ export default defineNuxtPlugin((nuxtApp) => {
   axiosInstance.interceptors.response.use(
     (response) => response,
     (error) => {
-      if (error.response && error.response.status === 401) {
-        useAuthStore().logout();
-        sessionStorage.removeItem("token");
-        navigateTo("/auth/login"); // Redirect to your login page
-      }
+      // if (error.response && error.response.status === 401) {
+      //   useAuthStore().logout();
+      //   sessionStorage.removeItem("token");
+      //   navigateTo("/auth/login"); // Redirect to your login page
+      // }
       return Promise.reject(error);
     }
   );
