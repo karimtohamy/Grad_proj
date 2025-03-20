@@ -15,19 +15,19 @@ class ServiceProviderResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-
-        $service_provider =$this->resource;
-        return[
-            'id'=>$service_provider->id,
-            'name'=>$service_provider->user->getTranslation('name',app()->getLocale()),
-            'has_assistant'=>$service_provider->has_assistant,
-            'years_of_expirience'=>$service_provider->years_of_experience,
-            'image'=>$service_provider->user->Image,
-            'rating'=>Review::where('rated_id', $service_provider->id)
-            ->where('rated_type', 'provider')
-            ->avg('rating'),
-
-
+        return [
+            'id' => $this->id,
+            'user_id' => $this->user_id,
+            'has_assistant' => $this->has_assistant,
+            'years_of_experience' => $this->years_of_experience,
+            'service_id' => $this->service_id,
+            'slug' => $this->slug,
+            'is_featured' => $this->is_featured,
+            'received_reviews_count' => $this->received_reviews_count,
+            'received_reviews_avg_rating' => $this->received_reviews_avg_rating,
+            'name' => $this->user->getTranslation('name', app()->getLocale()),
+            'service_name' => $this->service->getTranslation('name', app()->getLocale()),
         ];
+
     }
 }
