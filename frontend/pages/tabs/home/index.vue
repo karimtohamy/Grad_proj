@@ -1,33 +1,37 @@
 <template>
   <IonPage >
-    <NavBar/>
     <IonContent class="custom-content">
-
-      <Services :service="services"/>
-      <Featured :featured="featured"/>
+      <NavBar/>
+      <Services :loading="loading" :services="services"/>
+      <Featured :loading="loading" :featured="featured"/>
     </IonContent>
   </IonPage>
 </template>
 
 <script setup>
 definePageMeta({
-  alias: ['/','/tabs/home'],
+  alias: ['/','/tabs/home','/tabs'],
 })
  const serviceStore = useServicesStore()
  const services = ref([])
  const featured = ref([])
  const loading = ref(false)
-  function getHomePageData(){
-    serviceStore.getHomepageData()
-    .then((res)=>{
-      services.value = res.services
-      featured.value = res.featured_providers
-    })
+ 
+ onIonViewWillEnter(async () => {
+  await getHomePageData();
+});
+
+async function getHomePageData() {
+  loading.value = true;
+  try {
+    const res = await serviceStore.getHomepageData();
+    services.value = res.services;
+    featured.value = res.featured_providers;
+  } finally {
+    loading.value = false;
   }
- onIonViewDidEnter(async () => {
-  getHomePageData()
-   
- })
+}
+
 </script>
 
 <style scoped lang="scss">
