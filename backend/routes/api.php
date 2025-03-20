@@ -17,6 +17,7 @@ Route::middleware([SetLocale::class])->group(function () {
 });
 
 
+
 //returns all categories
 Route::get('/services',[ServiceController::class,'index']);
 
@@ -27,7 +28,7 @@ Route::get('/services/{service}',[ServiceProviderController::class,'index']);
 Route::get('/providers/{ServiceProvider}',[ServiceProviderController::class,'show']);
 
 //gets all data for the home page
-Route::get('/',HomepageController::class);
+Route::get('/homepage',HomepageController::class);
 
 
 
