@@ -1,6 +1,9 @@
 <template>
   <IonPage>
-    chat
+    <IonContent>
+
+      chat
+    </IonContent>
   </IonPage>
 </template>
 

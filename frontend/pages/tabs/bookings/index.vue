@@ -1,6 +1,9 @@
 <template>
   <IonPage>
-    bookings
+    <IonContent>
+      bookings
+    </IonContent>
+
   </IonPage>
 </template>
 
@@ -8,6 +11,4 @@
 
 </script>
 
-<style>
-
-</style>
+<style></style>
