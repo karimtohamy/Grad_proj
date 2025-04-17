@@ -4,6 +4,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Customer\HomepageController;
 use App\Http\Controllers\Customer\ServiceProviderController;
+use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Middleware\SetLocale;
 use Illuminate\Http\Request;
@@ -30,7 +31,7 @@ Route::get('/providers/{ServiceProvider}',[ServiceProviderController::class,'sho
 //gets all data for the home page
 Route::get('/homepage',HomepageController::class);
 
-
+Route::post('/forgot-password',[ResetPasswordController::class,'forgotPassword']);
 
 
 Route::middleware(['auth:sanctum',SetLocale::class])->group(function () {
