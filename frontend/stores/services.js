@@ -23,8 +23,8 @@ export const useServicesStore = defineStore("servicesStore", {
     },
 
     async fetchServiceProvider(provider_id) {
-      const response = await $axios.get(`/providers/${provider_id}`);
-      return response;
+      const {data} = await $axios.get(`/providers/${provider_id}`);
+      return data;
     },
   },
 });
