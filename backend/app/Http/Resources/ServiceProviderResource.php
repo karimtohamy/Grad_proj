@@ -27,6 +27,7 @@ class ServiceProviderResource extends JsonResource
             'received_reviews_avg_rating' => $this->received_reviews_avg_rating,
             'name' => $this->user->getTranslation('name', app()->getLocale()),
             'service_name' => $this->service->getTranslation('name', app()->getLocale()),
+            'image'=>$this->user->image?->image_path
         ];
 
     }
