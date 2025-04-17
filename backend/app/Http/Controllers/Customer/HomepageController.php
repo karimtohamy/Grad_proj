@@ -19,7 +19,7 @@ class HomepageController extends Controller
 
             ];
         })->toArray();
-        $featured_providers = ServiceProvider::with(['user', 'service'])
+        $featured_providers = ServiceProvider::with(['user.image', 'service'])
             ->withCount('receivedReviews')
             ->withAvg('receivedReviews', 'rating')
             ->where('is_featured', 1)
