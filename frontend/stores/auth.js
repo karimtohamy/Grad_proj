@@ -6,6 +6,7 @@ export const useAuthStore = defineStore("auth", {
     user: JSON.parse(localStorage.getItem('user')) || null,
   }),
   actions: {
+    //actions (api calls)
     async login(credentials) {
       const { $axios } = useNuxtApp();
       const { data } = await $axios.post('/login', credentials);
@@ -32,6 +33,13 @@ export const useAuthStore = defineStore("auth", {
       localStorage.removeItem("user");
       return data.message
     },
+    async forgetPassword(email){
+      const { $axios } = useNuxtApp();
+
+      const {data} = await $axios.post('/forgot-password',{email}) 
+      return data
+    },
+    //mutations (state managment)
     setToken(token) {
       this.token = token;
       localStorage.setItem("token", token);
