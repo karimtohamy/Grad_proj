@@ -10,7 +10,7 @@ class ReviewController extends Controller
 {
     public function create(Request $request){
         $validated = $request->validate(
-            mfnhfugfv[
+            [
             'rating' => 'required|numeric|min:1|max:5',
             'comments' => 'nullable|string',
             'rater_id' => 'required|integer',
@@ -18,7 +18,7 @@ class ReviewController extends Controller
             'rated_id' => 'required|integer',
             'rated_type' => 'required|string',
         ]);
-
+        //commment for explani
         $review = Review::create($validated);
         return response()->json($review->load(['rater', 'rated']), 201);
 
