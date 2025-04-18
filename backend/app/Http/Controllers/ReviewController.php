@@ -9,7 +9,8 @@ use Illuminate\Http\Request;
 class ReviewController extends Controller
 {
     public function create(Request $request){
-        $validated = $request->validate([
+        $validated = $request->validate(
+            mfnhfugfv[
             'rating' => 'required|numeric|min:1|max:5',
             'comments' => 'nullable|string',
             'rater_id' => 'required|integer',
