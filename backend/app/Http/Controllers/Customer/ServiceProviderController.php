@@ -24,16 +24,22 @@ class ServiceProviderController extends Controller
     }
     public function show(ServiceProvider $ServiceProvider)
     {
-        $provider = $ServiceProvider->user;
-        $reviews = Review::where('rated_id', $ServiceProvider->id)->where('rated_type', 'provider');
+        $user = $ServiceProvider->user; // this is the User model
+        $image = $user->image; // this is the Image model
+
+        $reviews = Review::where('rated_id', $ServiceProvider->id)
+            ->where('rated_type', 'provider');
+
         return response()->json([
             'service_provider_id' => $ServiceProvider->id,
-            'user_id' => $provider->id,
-            'email' => $provider->email,
-            'phone' => $provider->phone,
-            'bookings' => $ServiceProvider->bookings() ?? null,
+            'user_id' => $user->id,
+            'email' => $user->email,
+            'phone' => $user->phone,
+            'bookings' => $ServiceProvider->bookings ?? null,
             'rating' => $reviews->avg('rating'),
-            'comments' => $reviews->whereNotNull('comments')->get('comments')->toArray()
+            'comments' => $reviews->whereNotNull('comments')->get('comments')->toArray(),
+            'image' => $image?->image_path // or return full URL if needed
         ]);
     }
+
 }
