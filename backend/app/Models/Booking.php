@@ -10,7 +10,9 @@ class Booking extends Model
         'service_provider_id',
         'customer_id',
         'status',
-        'canceled_by'
+        'canceled_by',
+        'price',
+        'booked_time'
     ];
     public function serviceProvider()
     {
