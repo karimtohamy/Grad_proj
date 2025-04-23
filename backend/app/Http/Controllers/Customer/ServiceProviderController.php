@@ -29,16 +29,17 @@ class ServiceProviderController extends Controller
 
         $reviews = Review::where('rated_id', $ServiceProvider->id)
             ->where('rated_type', 'provider');
-
+        $comments = $reviews->whereNotNull('comments')->get('comments')->toArray();
         return response()->json([
             'service_provider_id' => $ServiceProvider->id,
             'user_id' => $user->id,
-            'email' => $user->email,
-            'phone' => $user->phone,
+            'name'=>$user->name,
             'bookings' => $ServiceProvider->bookings ?? null,
             'rating' => $reviews->avg('rating'),
-            'comments' => $reviews->whereNotNull('comments')->get('comments')->toArray(),
-            'image' => $image?->image_path // or return full URL if needed
+            'rating_count'=>$reviews->count(),
+            'comments' => empty($comments) ? null : $comments,
+            'image' => $image?->image_path,
+            'service'=>$ServiceProvider->service
         ]);
     }
 
