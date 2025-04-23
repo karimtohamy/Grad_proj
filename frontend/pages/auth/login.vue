@@ -68,13 +68,17 @@
 <script setup>
 
 import { Keyboard } from '@capacitor/keyboard';
+import { isPlatform } from '@ionic/vue';
 const router = useRouter()
 const userAuth = useAuthStore()
 const user = ref({})
 const errMsg = ref('')
 const showPassword = ref(false);
 function login() {
-  Keyboard.hide()
+  if(!isPlatform('desktop')){
+
+    Keyboard.hide()
+  }
   return userAuth.login(user.value)
     .then((res) => {
       res.data
