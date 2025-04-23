@@ -5,6 +5,7 @@ use App\Http\Controllers\Customer\HomepageController;
 use App\Http\Controllers\Customer\ServiceProviderController;
 use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\ServiceProvider\BookingController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\SetLocale;
 use Illuminate\Http\Request;
@@ -39,3 +40,6 @@ Route::middleware(['auth:sanctum', SetLocale::class])->group(function () {
     Route::post('upload-profile-image', [UserController::class, 'upload']);
 });
 
+Route::middleware(['auth:sanctum'])->group(function(){
+Route::post('/confirm-booking',[BookingController::class,'store']);
+});
