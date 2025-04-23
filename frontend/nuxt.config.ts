@@ -6,7 +6,7 @@ export default defineNuxtConfig({
       apiBase: process.env.API_BASE ,
     },
   },
-  compatibilityDate: "2024-11-01",
+  compatibilityDate: "2025-11-01",
   ssr: false,
 
   devtools: { enabled: true },
