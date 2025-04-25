@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\customer\RegisterRequest;
+use App\Models\Customer;
 use App\Models\User;
 use App\Services\EmailService;
 use Auth;
@@ -47,6 +48,9 @@ class AuthController extends Controller
             'password' => Hash::make($request->password),
             'phone' => $request->phone,
             'phone_verified_at' => now()
+        ]);
+        Customer::create([
+            'user_id'=>$user->id,
         ]);
         $token = $user->createToken('main')->plainTextToken;
 

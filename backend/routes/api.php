@@ -40,6 +40,8 @@ Route::middleware(['auth:sanctum', SetLocale::class])->group(function () {
     Route::post('upload-profile-image', [UserController::class, 'upload']);
 });
 
-Route::middleware(['auth:sanctum'])->group(function(){
-Route::post('/confirm-booking',[BookingController::class,'store']);
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::post('/confirm-booking', [BookingController::class, 'store']);
+    Route::post('/create-booking', [\App\Http\Controllers\Customer\BookingController::class, 'store']);
+
 });
