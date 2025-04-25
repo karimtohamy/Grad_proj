@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('bookings', function (Blueprint $table) {
             $table->string('short_address');
-            $table->text('meesage');
+            $table->text('message')->nullable(true);
         });
     }
 
