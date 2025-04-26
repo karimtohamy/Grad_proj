@@ -6,6 +6,10 @@ export const useBookingsStore = defineStore('BookingsStore',{
     async createBooking(data){
       const response = await $axios.post('/create-booking', data)
       return response
+    },
+    async fetchAllBookings(){
+      const {data}= await $axios.get('/get-bookings');
+      return data
     }
   }
 })

@@ -1,14 +1,26 @@
 <template>
   <IonPage>
     <IonContent>
-      bookings
+      <div>
+        Bookings
+      </div>
+      <div class="rounded-xl flex bg-white">
+        {{response}}
+
+      </div>
     </IonContent>
 
   </IonPage>
 </template>
 
-<script lang="ts" setup>
+<script setup>
+const bookingStore = useBookingsStore();
+const response = ref()
+onIonViewWillEnter(async()=>{
+   response.value = await bookingStore.fetchAllBookings()
 
+
+})
 </script>
 
 <style></style>

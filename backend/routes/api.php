@@ -43,5 +43,6 @@ Route::middleware(['auth:sanctum', SetLocale::class])->group(function () {
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/confirm-booking', [BookingController::class, 'store']);
     Route::post('/create-booking', [\App\Http\Controllers\Customer\BookingController::class, 'store']);
+    Route::get('/get-bookings', [\App\Http\Controllers\Customer\BookingController::class, 'index']);
 
 });

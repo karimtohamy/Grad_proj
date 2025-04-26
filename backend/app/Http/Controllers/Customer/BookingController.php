@@ -13,7 +13,8 @@ class BookingController extends Controller
 {
     public function index()
     {
-
+        $bookings = auth()->user()->customer->bookings;
+        return response()->json($bookings);
     }
 
     public function show()
