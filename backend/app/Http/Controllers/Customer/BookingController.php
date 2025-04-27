@@ -13,13 +13,21 @@ class BookingController extends Controller
 {
     public function index()
     {
-        $bookings = auth()->user()->customer->bookings;
-        return response()->json($bookings);
+        $user = auth()->user();
+        $customer = $user->customer;
+        $bookings = $customer->bookings;
+        $serviceProvider = $bookings->serviceProvider;
+
+        return response()->json([
+            // $customer,
+            $bookings,
+            // $serviceProvider,
+        ]);
     }
 
-    public function show()
+    public function show(Booking $booking)
     {
-
+        return response()->json($booking);
     }
 
     public function store(Request $request)
@@ -56,7 +64,7 @@ class BookingController extends Controller
             'service_provider_id' => (int) $request->service_provider_id,
             'booked_time' => $formattedDatetime,
             'short_address' => $shortAddress,
-            'message'=>$request->message ?? null
+            'message' => $request->message ?? null
         ]);
 
         return response()->json([

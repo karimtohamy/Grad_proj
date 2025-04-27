@@ -1,12 +1,15 @@
 <template>
   <IonPage>
     <IonContent>
-      <div>
-        Bookings
-      </div>
-      <div class="rounded-xl flex bg-white">
-        {{response}}
+      <div class="px-3 grid grid-cols-1">
 
+        <div>
+          Bookings
+        </div>
+        <div class="rounded-xl flex bg-white">
+          <img />
+
+        </div>
       </div>
     </IonContent>
 
